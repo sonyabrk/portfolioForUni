@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник - Личный сайт студента</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">П</div>
+                    <h1>Иван Иванов</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html" class="nav-link">Главная</a></li>
+                        <li><a href="projects.html" class="nav-link">Проекты</a></li>
+                        <li><a href="diary.html" class="nav-link active">Дневник</a></li>
+                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <h2 class="section-title">Мой учебный прогресс</h2>
+            
+            <div class="diary-container">
+                <div class="diary-entries">
+                    <div class="diary-item">
+                        <div class="diary-date">15 дек</div>
+                        <div class="diary-task">Верстка макета сайта</div>
+                        <div class="status status-completed">✓</div>
+                    </div>
+                    <div class="diary-item">
+                        <div class="diary-date">10 дек</div>
+                        <div class="diary-task">JavaScript основы</div>
+                        <div class="status status-completed">✓</div>
+                    </div>
+                    <div class="diary-item">
+                        <div class="diary-date">05 дек</div>
+                        <div class="diary-task">Работа с формами</div>
+                        <div class="status status-inprogress">in progress</div>
+                    </div>
+                    <div class="diary-item">
+                        <div class="diary-date">01 дек</div>
+                        <div class="diary-task">Адаптивный дизайн</div>
+                        <div class="status status-inprogress">in progress</div>
+                    </div>
+                    
+                    <button class="add-entry-btn">Добавить запись</button>
+                </div>
+                
+                <div class="courses-section">
+                    <h3 class="section-title">Текущие курсы</h3>
+                    
+                    <div class="course-item">
+                        <div class="course-name">
+                            <span>Веб-разработка</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="course-bar">
+                            <div class="course-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-name">
+                            <span>JavaScript</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="course-bar">
+                            <div class="course-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-name">
+                            <span>React</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="course-bar">
+                            <div class="course-progress" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© Фронтенд 2025</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
