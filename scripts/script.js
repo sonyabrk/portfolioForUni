@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Фильтрация проектов
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             filterButtons.forEach(b => {
@@ -18,8 +20,33 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             this.classList.add('active');
             
-            // Здесь можно добавить логику фильтрации проектов
-            console.log('Фильтр: ' + this.textContent);
+            const filterValue = this.textContent.toLowerCase();
+            
+            // Сопоставление сокращений с полными названиями технологий
+            const techMapping = {
+                'js': 'javascript',
+                'ts': 'typescript'
+            };
+            
+            const searchTech = techMapping[filterValue] || filterValue;
+            
+            projectItems.forEach(item => {
+                const itemTech = item.getAttribute('data-tech');
+                
+                if (filterValue === 'все' || itemTech.includes(searchTech)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
         });
     });
     
