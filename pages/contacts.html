@@ -2,19 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Контакты - Личный сайт студента</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <header>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+    
+    <header class="nav">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">С</div>
                     <h1>Софья Брюханова</h1>
                 </div>
-                <nav>
+                <nav aria-label="Основная навигация">
                     <ul>
                         <li><a href="../index.html" class="nav-link">Главная</a></li>
                         <li><a href="projects.html" class="nav-link">Проекты</a></li>
@@ -26,26 +28,35 @@
         </div>
     </header>
 
-    <div class="main-content">
+    <main id="main" class="main-content">
         <div class="container">
-            <h2 class="section-title">Контакты</h2>
+            <h1 class="section-title">Контакты</h1>
             
             <div class="contact-container">
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" novalidate>
                         <div class="form-group">
                             <label for="name">Имя:</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control" required
+                                   aria-describedby="name-hint name-error">
+                            <small id="name-hint" class="form-hint">Введите ваше полное имя</small>
+                            <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" required
+                                   aria-describedby="email-hint email-error">
+                            <small id="email-hint" class="form-hint">Мы пришлём ответ на этот адрес</small>
+                            <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Сообщение:</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea id="message" name="message" class="form-control" required
+                                      aria-describedby="message-hint message-error"></textarea>
+                            <small id="message-hint" class="form-hint">Опишите цель вашего обращения</small>
+                            <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <button type="submit" class="btn">Отправить сообщение</button>
@@ -54,25 +65,25 @@
                 
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon"></div>
+                        <div class="contact-icon" aria-hidden="true">📧</div>
                         <div>bryukhanova.s.i@edu.mirea.ru</div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon"></div>
+                        <div class="contact-icon" aria-hidden="true">💻</div>
                         <div>GitHub: sonyabrk</div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon"></div>
+                        <div class="contact-icon" aria-hidden="true">📍</div>
                         <div>Москва, Россия</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>© Фронтенд 2025</p>
         </div>

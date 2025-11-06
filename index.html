@@ -2,15 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Главная - Софья Брюханова</title>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <header class="modern-header">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+    
+    <header class="nav">
         <div class="container">
             <div class="header-content">
-                <nav>
+                <div class="logo">
+                    <div class="logo-icon">С</div>
+                    <h1>Софья Брюханова</h1>
+                </div>
+                <nav aria-label="Основная навигация">
                     <ul>
                         <li><a href="index.html" class="nav-link active">Главная</a></li>
                         <li><a href="./pages/projects.html" class="nav-link">Проекты</a></li>
@@ -22,22 +28,30 @@
         </div>
     </header>
 
-    <div class="main-content">
+    <main id="main" class="main-content">
         <div class="container">
             <section class="hero">
+                <div class="hero-image">
+                    <figure class="hero_image">
+                        <!-- Используем существующее изображение с правильными атрибутами -->
+                        <img class="profile-img"
+                            src="./images/goods1.jpeg"
+                            srcset="./images/goods1.jpeg 1x"
+                            width="300" height="300"
+                            alt="Портрет Софьи Брюхановой"
+                            fetchpriority="high">
+                    </figure>
+                </div>
                 <div class="hero-text">
                     <h1>Софья Брюханова</h1>
                     <p>Группа ЭФБО-02-24<br>Веб-разработка (React / TS / JS / SCSS)</p>
                     <a href="../assets/resume.pdf" class="btn" download>Скачать резюме</a>
                 </div>
-                <div class="hero-image">
-                    <img src="./images/goods1.jpeg" class="profile-img">
-                </div>
             </section>
 
             <div class="skills-projects-container">
-                <section class="skills-section">
-                    <h2 class="section-title">SKILLS</h2>
+                <section class="skills-section" aria-labelledby="skills-title">
+                    <h2 id="skills-title" class="section-title">SKILLS</h2>
                     <div class="skills-container">
                         <div class="skill-item">
                             <div class="skill-name">
@@ -45,7 +59,7 @@
                                 <span>90%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%;"></div>
+                                <div class="skill-level" style="width: 90%;" aria-label="Уровень навыка HTML/CSS 90%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -54,7 +68,7 @@
                                 <span>80%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%;"></div>
+                                <div class="skill-level" style="width: 80%;" aria-label="Уровень навыка JavaScript/TypeScript 80%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -63,7 +77,7 @@
                                 <span>85%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%;"></div>
+                                <div class="skill-level" style="width: 85%;" aria-label="Уровень навыка SCSS 85%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -72,39 +86,42 @@
                                 <span>77%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 60%;"></div>
+                                <div class="skill-level" style="width: 77%;" aria-label="Уровень навыка React 77%"></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section class="projects-section">
-                    <h2 class="section-title">TOP PROJECTS</h2>
+                <section class="projects-section" aria-labelledby="projects-title">
+                    <h2 id="projects-title" class="section-title">TOP PROJECTS</h2>
                     <div class="projects-grid">
-                        <div class="project-card">
-                            <div class="project-icon">M</div>
+                        <article class="project-card">
+                            <div class="project-icon" aria-hidden="true">M</div>
                             <h3>Сайт с визуализацией - мудборд</h3>
-                        </div>
-                        <div class="project-card">
-                            <div class="project-icon">П</div>
+                            <p class="visually-hidden">Проект мудборда для визуализации идей и вдохновения</p>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-icon" aria-hidden="true">П</div>
                             <h3>Сайт для управления списком пользователей</h3>
-                        </div>
-                        <div class="project-card">
-                            <div class="project-icon">И</div>
+                            <p class="visually-hidden">Система управления пользователями с возможностями CRUD</p>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-icon" aria-hidden="true">И</div>
                             <h3>Интерактивный строительный журнал</h3>
-                        </div>
+                            <p class="visually-hidden">Журнал для отслеживания прогресса строительных работ</p>
+                        </article>
                     </div>
                 </section>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>© Фронтенд 2025 | Софья Брюханова</p>
+            <p>© Фронтенд 2025</p>
         </div>
     </footer>
 
-    <script src="../scripts/script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

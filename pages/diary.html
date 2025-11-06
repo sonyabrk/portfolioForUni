@@ -2,19 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Дневник - Личный сайт студента</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <header>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+    
+    <header class="nav">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">С</div>
                     <h1>Софья Брюханова</h1>
                 </div>
-                <nav>
+                <nav aria-label="Основная навигация">
                     <ul>
                         <li><a href="../index.html" class="nav-link">Главная</a></li>
                         <li><a href="projects.html" class="nav-link">Проекты</a></li>
@@ -26,38 +28,40 @@
         </div>
     </header>
 
-    <div class="main-content">
+    <main id="main" class="main-content">
         <div class="container">
-            <h2 class="section-title">Мой учебный прогресс</h2>
+            <h1 class="section-title">Мой учебный прогресс</h1>
             
-            <div class="diary-container">
+            <div class="diary-grid">
                 <div class="diary-entries">
-                    <div class="diary-item">
-                        <div class="diary-date">17 ноя</div>
-                        <div class="diary-task">Сдать научную статью</div>
-                        <div class="status status-completed">✓</div>
-                    </div>
-                    <div class="diary-item">
-                        <div class="diary-date">7 ноя</div>
-                        <div class="diary-task">Swift основы</div>
-                        <div class="status status-completed">✓</div>
-                    </div>
-                    <div class="diary-item">
-                        <div class="diary-date">3 но</div>
-                        <div class="diary-task">Написать скрипты</div>
-                        <div class="status status-inprogress">in progress</div>
-                    </div>
-                    <div class="diary-item">
-                        <div class="diary-date">31 окт</div>
-                        <div class="diary-task">Сделать адаптив</div>
-                        <div class="status status-inprogress">in progress</div>
+                    <div class="diary-items-grid">
+                        <div class="diary-item">
+                            <div class="diary-date">17 ноя</div>
+                            <div class="diary-task">Сдать научную статью</div>
+                            <div class="status status-completed" aria-label="Завершено">✓</div>
+                        </div>
+                        <div class="diary-item">
+                            <div class="diary-date">7 ноя</div>
+                            <div class="diary-task">Swift основы</div>
+                            <div class="status status-completed" aria-label="Завершено">✓</div>
+                        </div>
+                        <div class="diary-item">
+                            <div class="diary-date">3 ноя</div>
+                            <div class="diary-task">Написать скрипты</div>
+                            <div class="status status-inprogress" aria-label="В процессе">in progress</div>
+                        </div>
+                        <div class="diary-item">
+                            <div class="diary-date">31 окт</div>
+                            <div class="diary-task">Сделать адаптив</div>
+                            <div class="status status-inprogress" aria-label="В процессе">in progress</div>
+                        </div>
                     </div>
                     
                     <button class="add-entry-btn">Добавить запись</button>
                 </div>
                 
                 <div class="courses-section">
-                    <h3 class="section-title">Текущие курсы</h3>
+                    <h2 class="section-title">Текущие курсы</h2>
                     
                     <div class="course-item">
                         <div class="course-name">
@@ -65,7 +69,7 @@
                             <span>90%</span>
                         </div>
                         <div class="course-bar">
-                            <div class="course-progress" style="width: 90%;"></div>
+                            <div class="course-progress" style="width: 90%;" aria-label="Прогресс 90%"></div>
                         </div>
                     </div>
                     
@@ -75,7 +79,7 @@
                             <span>70%</span>
                         </div>
                         <div class="course-bar">
-                            <div class="course-progress" style="width: 70%;"></div>
+                            <div class="course-progress" style="width: 70%;" aria-label="Прогресс 70%"></div>
                         </div>
                     </div>
                     
@@ -85,15 +89,15 @@
                             <span>50%</span>
                         </div>
                         <div class="course-bar">
-                            <div class="course-progress" style="width: 50%;"></div>
+                            <div class="course-progress" style="width: 50%;" aria-label="Прогресс 50%"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>© Фронтенд 2025</p>
         </div>

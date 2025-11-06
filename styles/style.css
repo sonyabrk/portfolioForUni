@@ -1,3 +1,10 @@
+:root { 
+    color-scheme: light dark; 
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-2xl: 3rem;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,22 +12,75 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body { 
+    height: 100%; 
+}
+
 body {
     background-color: #d6d5d5;
     color: #333;
     line-height: 1.6;
+    margin: 0;
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.page {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { 
+    flex: 1; 
+}
+
+/* Skip link */
+.skip-link{
+    position: absolute;
+    left: 1rem;
+    top: -100%;
+    z-index: 10000;
+    padding: .5rem .75rem;
+    background: #111;
+    color: #fff;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible { 
+    top: 1rem; 
+}
+
+:focus-visible { 
+    outline: 3px solid #9d247d; 
+    outline-offset: 2px; 
+}
+
+a, button, input, textarea { 
+    outline-offset: 2px; 
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding-inline: clamp(.75rem, .5rem + 1vw, 2rem);
 }
 
-header {
+/* Sticky header */
+header.nav {
+    position: sticky;
+    top: 0;
     background-color: #54604ce2;
     color: white;
-    padding: 20px 0;
+    padding-block-start: calc(20px + env(safe-area-inset-top));
+    padding-block-end: 20px;
+    padding-inline-start: calc(20px + env(safe-area-inset-left));
+    padding-inline-end: calc(20px + env(safe-area-inset-right));
+    z-index: 100;
+    isolation: isolate;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -64,7 +124,8 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-nav ul li a:hover, nav ul li a.active {
+nav ul li a:hover, 
+nav ul li a.active {
     color: #85004b;
 }
 
@@ -73,12 +134,14 @@ nav ul li a:hover, nav ul li a.active {
     min-height: calc(100vh - 200px);
 }
 
-footer {
+/* Footer with safe areas */
+footer.footer {
     background-color: #54604ce2;
     color: white;
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
 }
 
 /* Обновленные стили для главной страницы */
@@ -102,20 +165,21 @@ footer {
     object-fit: cover;
     border: 5px solid #9d247d;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    aspect-ratio: 1/1;
 }
 
 .hero-text {
-    max-width: 600px;
+    max-width: 65ch;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 1.5rem + 1.5vw, 2.5rem);
     margin-bottom: 15px;
     color: #2c3e50;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
     margin-bottom: 25px;
     color: #555;
 }
@@ -124,7 +188,7 @@ footer {
     display: inline-block;
     background-color: #9d247d;
     color: white;
-    padding: 12px 25px;
+    padding: max(.5rem, calc((44px - 1em)/2)) 1.5rem;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 500;
@@ -133,6 +197,7 @@ footer {
     cursor: pointer;
     margin-bottom: 30px;
     box-shadow: 0 4px 10px rgba(157, 36, 125, 0.3);
+    min-height: 44px;
 }
 
 .btn:hover {
@@ -147,7 +212,7 @@ footer {
 }
 
 .section-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 1.3rem + 1vw, 1.8rem);
     margin-bottom: 20px;
     color: #2c3e50;
     border-bottom: 2px solid #9d247d;
@@ -196,6 +261,7 @@ footer {
     transition: transform 0.3s;
     cursor: pointer;
     border-top: 3px solid #9d247d;
+    min-width: 0;
 }
 
 .project-card:hover {
@@ -216,22 +282,21 @@ footer {
     font-weight: bold;
 }
 
-/* Стили для страницы проектов */
 .filters {
     display: flex;
     margin-bottom: 30px;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .filter-btn {
-    background-color: #ecf0f1;
+    background-color: #54604ce2;
     border: none;
-    padding: 8px 15px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    padding: max(.5rem, calc((44px - 1em)/2)) 1rem;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    min-height: 44px;
 }
 
 .filter-btn.active, .filter-btn:hover {
@@ -239,10 +304,27 @@ footer {
     color: white;
 }
 
+.projects-area {
+    container-type: inline-size;
+    container-name: projects;
+}
+
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
     gap: 25px;
+}
+
+@container projects (min-width: 640px) {
+    .projects-container { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@container projects (min-width: 960px) {
+    .projects-container { 
+        grid-template-columns: repeat(3, 1fr); 
+    }
 }
 
 .project-item {
@@ -250,21 +332,25 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    width: 20em;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-width: 0;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.project-img-container {
+    width: 100%;
+    overflow: hidden;
 }
 
 .project-img {
+    width: 100%;
     height: 180px;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
+    object-fit: cover;
+    aspect-ratio: 16/9;
 }
 
 .project-info {
@@ -275,18 +361,26 @@ footer {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: #2c3e50;
+    overflow-wrap: anywhere;
 }
 
 .project-tech {
     color: #7f8c8d;
     font-size: 0.9rem;
+    overflow-wrap: anywhere;
 }
 
 /* Стили для страницы дневника */
-.diary-container {
+.diary-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .diary-grid {
+        grid-template-columns: 2fr 1fr;
+    }
 }
 
 .diary-entries, .courses-section {
@@ -296,11 +390,17 @@ footer {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
+.diary-items-grid {
+    display: grid;
+    gap: 15px;
+}
+
 .diary-item {
     display: flex;
     align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid #ecf0f1;
+    min-width: 0;
 }
 
 .diary-date {
@@ -311,6 +411,7 @@ footer {
 
 .diary-task {
     flex: 1;
+    overflow-wrap: anywhere;
 }
 
 .status {
@@ -356,7 +457,7 @@ footer {
 .add-entry-btn {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: max(.5rem, calc((44px - 1em)/2));
     background-color: #9d247d;
     color: white;
     border: none;
@@ -365,6 +466,7 @@ footer {
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s;
+    min-height: 44px;
 }
 
 .add-entry-btn:hover {
@@ -374,8 +476,14 @@ footer {
 /* Стили для страницы контактов */
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .contact-form, .contact-info {
@@ -408,6 +516,20 @@ textarea.form-control {
     resize: vertical;
 }
 
+.form-hint {
+    display: block;
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: #64748b;
+}
+
+.error-message {
+    display: block;
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: #dc2626;
+}
+
 .contact-item {
     display: flex;
     align-items: center;
@@ -426,14 +548,78 @@ textarea.form-control {
     color: white;
 }
 
+/* Accessibility improvements */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .project-item:hover,
+    .project-card:hover,
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* Enhanced contrast */
+@media (prefers-contrast: more) {
+    .btn, .filter-btn, .add-entry-btn { 
+        box-shadow: inset 0 0 0 2px #fff; 
+        border: 2px solid #000;
+    }
+    
+    .project-item {
+        border: 1px solid #000;
+    }
+}
+
+/* Coarse pointer devices */
+@media (pointer: coarse) {
+    a, button, .nav-link { 
+        min-height: 44px; 
+        padding: .75rem 1rem; 
+    }
+}
+
+/* Container queries support */
+@supports (container-type: inline-size) {
+    .projects-area {
+        container-type: inline-size;
+        container-name: projects;
+    }
+}
+
+/* Fallback for browsers without container queries support */
+@supports not (container-type: inline-size) {
+    .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
     }
     
     .hero p {
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1rem);
     }
     
     .profile-img {
@@ -459,4 +645,13 @@ textarea.form-control {
     nav ul li {
         margin: 5px 10px;
     }
+    
+    .filters {
+        justify-content: center;
+    }
+}
+
+.full-bleed {
+    margin-inline: calc(50% - 50vw);
+    padding-inline: calc(50vw - 50%);
 }
