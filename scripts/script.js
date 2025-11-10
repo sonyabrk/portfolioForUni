@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'проектов';
     }
 
-    // ========== УЛУЧШЕННАЯ ОБРАБОТКА ФОРМЫ КОНТАКТОВ ==========
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('form-status');
     
@@ -145,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const fieldId = field.id;
         const errorElement = document.getElementById(fieldId + '-error');
         
-        // Очищаем предыдущую ошибку
         clearFieldError(field);
         
         let isValid = true;
@@ -185,9 +183,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!isValid) {
             field.setAttribute('aria-invalid', 'true');
+            field.setAttribute('aria-describedby', fieldId + '-error');
             if (errorElement) {
                 errorElement.textContent = errorMessage;
+                errorElement.setAttribute('role', 'alert');
             }
+        } else {
+            field.removeAttribute('aria-invalid');
+            field.removeAttribute('aria-describedby');
         }
         
         return isValid;

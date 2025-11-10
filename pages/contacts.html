@@ -9,7 +9,7 @@
 <body>
     <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     
-    <header class="nav">
+    <header class="nav" role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -36,7 +36,7 @@
         </div>
     </header>
 
-    <main id="main" class="main-content">
+    <main id="main" class="main-content" role="main">
         <div class="container">
             <h1 class="section-title">Контакты</h1>
             
@@ -44,7 +44,7 @@
                 <section class="contact-form" aria-labelledby="contact-form-title">
                     <h2 id="contact-form-title" class="visually-hidden">Форма обратной связи</h2>
                     
-                    <form id="contactForm" novalidate aria-labelledby="contact-form-title">
+                    <form id="contactForm" novalidate aria-labelledby="contact-form-title" role="form">
                         <fieldset>
                             <legend class="visually-hidden">Персональная информация</legend>
                             
@@ -60,8 +60,10 @@
                                        class="form-control" 
                                        required
                                        aria-required="true"
-                                       aria-describedby="name-hint name-error"
-                                       placeholder="Введите ваше имя">
+                                       aria-invalid="false"
+                                       aria-describedby="name-hint"
+                                       placeholder="Введите ваше имя"
+                                       autocomplete="name">
                                 <small id="name-hint" class="form-hint">Введите ваше полное имя</small>
                                 <span id="name-error" class="error-message" role="alert" aria-live="assertive"></span>
                             </div>
@@ -78,8 +80,10 @@
                                        class="form-control" 
                                        required
                                        aria-required="true"
-                                       aria-describedby="email-hint email-error"
-                                       placeholder="example@mail.ru">
+                                       aria-invalid="false"
+                                       aria-describedby="email-hint"
+                                       placeholder="example@mail.ru"
+                                       autocomplete="email">
                                 <small id="email-hint" class="form-hint">Мы пришлём ответ на этот адрес</small>
                                 <span id="email-error" class="error-message" role="alert" aria-live="assertive"></span>
                             </div>
@@ -99,7 +103,8 @@
                                           class="form-control" 
                                           required
                                           aria-required="true"
-                                          aria-describedby="message-hint message-error"
+                                          aria-invalid="false"
+                                          aria-describedby="message-hint"
                                           placeholder="Опишите цель вашего обращения"
                                           rows="6"></textarea>
                                 <small id="message-hint" class="form-hint">Опишите цель вашего обращения</small>
@@ -119,7 +124,7 @@
                 </section>
                 
                 <section class="contact-info" aria-labelledby="contact-info-title">
-                    <h2 id="contact-info-title" class="visually-hidden">Контактная информация</h2>
+                    <h2 id="contact-info-title">Контактная информация</h2>
                     
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">📧</div>
@@ -154,7 +159,8 @@
             <div id="form-status" 
                  aria-live="polite" 
                  aria-atomic="true" 
-                 class="visually-hidden">
+                 class="visually-hidden"
+                 role="status">
             </div>
         </div>
     </main>

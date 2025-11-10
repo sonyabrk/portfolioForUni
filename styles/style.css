@@ -520,9 +520,9 @@ footer.footer {
 
 .contact-form, .contact-info {
     background-color: white;
-    border-radius: 8px;
+    
     padding: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    
 }
 
 .form-group {
@@ -567,6 +567,20 @@ textarea.form-control {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+.contact-form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-inline-size: auto;
+}
+
+.contact-form fieldset:first-of-type {
+    margin-bottom: 2rem;
+}
+
+.contact-form fieldset:last-of-type {
+    margin-bottom: 1rem;
 }
 
 .contact-icon {
@@ -789,9 +803,6 @@ img[loading="lazy"].loaded {
     .project-item {
         border: 1px solid #000;
     }
-    .contact-form fieldset {
-        border: 3px solid currentColor;
-    }
     
     .form-control {
         border: 2px solid currentColor;
@@ -874,9 +885,6 @@ img[loading="lazy"].loaded {
     
     .filters {
         justify-content: center;
-    }
-    .contact-form fieldset {
-        padding: 15px;
     }
     
     .form-actions .btn {
