@@ -33,13 +33,19 @@
             <section class="hero">
                 <div class="hero-image">
                     <figure class="hero_image">
-                        <!-- Используем существующее изображение с правильными атрибутами -->
-                        <img class="profile-img"
-                            src="./images/goods1.jpeg"
-                            srcset="./images/goods1.jpeg 1x"
-                            width="300" height="300"
-                            alt="Портрет Софьи Брюхановой"
-                            fetchpriority="high">
+                        <picture>
+                            <!-- WebP для современных браузеров -->
+                            <source srcset="./images/goods1.webp" type="image/webp">
+                            <!-- JPEG для старых браузеров -->
+                            <source srcset="./images/goods1.jpeg" type="image/jpeg">
+                            <!-- Фолбэк -->
+                            <img class="profile-img"
+                                src="./images/goods1.jpeg"
+                                srcset="./images/goods1.jpeg 1x, ./images/goods1@2x.jpeg 2x"
+                                width="300" height="300"
+                                alt="Портрет Софьи Брюхановой"
+                                fetchpriority="high">
+                        </picture>
                     </figure>
                 </div>
                 <div class="hero-text">
