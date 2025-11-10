@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Проекты - Личный сайт студента</title>
+    <title>Проекты - Софья Брюханова</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -13,15 +13,23 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">С</div>
+                    <div class="logo-icon" aria-hidden="true">С</div>
                     <h1>Софья Брюханова</h1>
                 </div>
                 <nav aria-label="Основная навигация">
-                    <ul>
-                        <li><a href="../index.html" class="nav-link">Главная</a></li>
-                        <li><a href="projects.html" class="nav-link active">Проекты</a></li>
-                        <li><a href="diary.html" class="nav-link">Дневник</a></li>
-                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    <ul role="menubar">
+                        <li role="none">
+                            <a href="../index.html" class="nav-link" role="menuitem">Главная</a>
+                        </li>
+                        <li role="none">
+                            <a href="projects.html" class="nav-link active" role="menuitem" aria-current="page">Проекты</a>
+                        </li>
+                        <li role="none">
+                            <a href="diary.html" class="nav-link" role="menuitem">Дневник</a>
+                        </li>
+                        <li role="none">
+                            <a href="contacts.html" class="nav-link" role="menuitem">Контакты</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -32,78 +40,96 @@
         <div class="container">
             <h1 class="section-title">Мои проекты</h1>
             
-            <div class="filters">
-                <button class="filter-btn active">Все</button>
-                <button class="filter-btn">HTML</button>
-                <button class="filter-btn">JS</button>
-                <button class="filter-btn">TS</button>
-                <button class="filter-btn">SCSS</button>
-                <button class="filter-btn">React</button>
-            </div>
+            <section aria-labelledby="filters-title">
+                <h2 id="filters-title" class="visually-hidden">Фильтры проектов</h2>
+                <div class="filters" role="toolbar" aria-label="Фильтры по технологиям">
+                    <button class="filter-btn active" aria-pressed="true" data-filter="all">Все</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="html">HTML</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="javascript">JavaScript</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="typescript">TypeScript</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="scss">SCSS</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="react">React</button>
+                </div>
+            </section>
 
-            <div class="projects-area">
-                <div class="projects-container">
-                    <div class="project-item" data-tech="html css javascript">
-                        <div class="project-img-container">
-                            <img src="../images/11.jpeg" 
-                                 class="project-img"
-                                 width="300" height="200"
-                                 alt="Личный сайт студента-разработчика"
-                                 loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-title">Личный сайт студента-разработчика</h2>
-                            <p class="project-tech">HTML, CSS, JS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-item" data-tech="react javascript scss">
-                        <div class="project-img-container">
-                            <img src="../images/2.png" 
-                                 class="project-img"
-                                 width="300" height="200"
-                                 alt="Мудборд для визуализации"
-                                 loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-title">Мудборд для визуализации</h2>
-                            <p class="project-tech">React, JS, SCSS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-item" data-tech="react typescript scss">
-                        <div class="project-img-container">
-                            <img src="../images/1.png" 
-                                 class="project-img"
-                                 width="300" height="200"
-                                 alt="Сайт для управления списком пользователей"
-                                 loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-title">Сайт для управления списком пользователей</h2>
-                            <p class="project-tech">React, TS, SCSS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-item" data-tech="react typescript scss">
-                        <div class="project-img-container">
-                            <img src="../images/3.png" 
-                                 class="project-img"
-                                 width="300" height="200"
-                                 alt="Интерактивный журнал строительных работ"
-                                 loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-title">Интерактивный журнал строительных работ</h2>
-                            <p class="project-tech">React, TS, SCSS</p>
-                        </div>
+            <section aria-labelledby="projects-list-title">
+                <h2 id="projects-list-title" class="visually-hidden">Список проектов</h2>
+                <div class="projects-area">
+                    <div class="projects-container" role="list" aria-label="Список проектов">
+                        <article class="project-item" data-tech="html css javascript" role="listitem">
+                            <div class="project-img-container">
+                                <img src="../images/11.jpeg" 
+                                     class="project-img"
+                                     width="300" height="200"
+                                     alt="Скриншот личного сайта студента-разработчика с современным дизайном"
+                                     loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Личный сайт студента-разработчика</h3>
+                                <p class="project-tech">HTML, CSS, JavaScript</p>
+                                <p class="visually-hidden">Проект включает адаптивный дизайн, семантическую разметку и современные CSS-техники</p>
+                            </div>
+                        </article>
+                        
+                        <article class="project-item" data-tech="react javascript scss" role="listitem">
+                            <div class="project-img-container">
+                                <img src="../images/2.png" 
+                                     class="project-img"
+                                     width="300" height="200"
+                                     alt="Интерфейс мудборда для визуализации идей с сеткой изображений"
+                                     loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Мудборд для визуализации</h3>
+                                <p class="project-tech">React, JavaScript, SCSS</p>
+                                <p class="visually-hidden">Интерактивная доска для создания визуальных коллекций и мудбордов</p>
+                            </div>
+                        </article>
+                        
+                        <article class="project-item" data-tech="react typescript scss" role="listitem">
+                            <div class="project-img-container">
+                                <img src="../images/1.png" 
+                                     class="project-img"
+                                     width="300" height="200"
+                                     alt="Панель управления списком пользователей с формами и таблицами"
+                                     loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Сайт для управления списком пользователей</h3>
+                                <p class="project-tech">React, TypeScript, SCSS</p>
+                                <p class="visually-hidden">Система управления пользователями с функциями CRUD и валидацией форм</p>
+                            </div>
+                        </article>
+                        
+                        <article class="project-item" data-tech="react typescript scss" role="listitem">
+                            <div class="project-img-container">
+                                <img src="../images/3.png" 
+                                     class="project-img"
+                                     width="300" height="200"
+                                     alt="Интерфейс интерактивного журнала строительных работ с графиками"
+                                     loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">Интерактивный журнал строительных работ</h3>
+                                <p class="project-tech">React, TypeScript, SCSS</p>
+                                <p class="visually-hidden">Журнал для отслеживания прогресса строительных проектов с аналитикой</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
+            </section>
+
+            <!-- Статус фильтрации для скринридеров -->
+            <div id="filter-status" 
+                 aria-live="polite" 
+                 aria-atomic="true" 
+                 class="visually-hidden">
+                Показаны все проекты
             </div>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>© Фронтенд 2025</p>
         </div>

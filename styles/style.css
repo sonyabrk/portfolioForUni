@@ -304,6 +304,20 @@ footer.footer {
     color: white;
 }
 
+.filter-btn:focus {
+    outline: 3px solid #9d247d;
+    outline-offset: 2px;
+    background-color: #9d247d;
+    color: white;
+}
+
+/* Состояние активной кнопки фильтра */
+.filter-btn[aria-pressed="true"] {
+    background-color: #9d247d;
+    color: white;
+}
+
+
 .projects-area {
     container-type: inline-size;
     container-name: projects;
@@ -334,12 +348,30 @@ footer.footer {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     min-width: 0;
+    transition: all 0.3s ease;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+.project-item:focus-within {
+    outline: 3px solid #9d247d;
+    outline-offset: 4px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.project-item.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 
 .project-img-container {
     width: 100%;
@@ -525,9 +557,10 @@ textarea.form-control {
 
 .error-message {
     display: block;
-    margin-top: .25rem;
-    font-size: .875rem;
-    color: #dc2626;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--error-color);
+    font-weight: 500;
 }
 
 .contact-item {
@@ -547,8 +580,19 @@ textarea.form-control {
     margin-right: 15px;
     color: white;
 }
+.nav-link:focus {
+    outline: 3px solid #9d247d;
+    outline-offset: 2px;
+    background-color: rgba(157, 36, 125, 0.1);
+}
 
-/* Accessibility improvements */
+.nav-link[aria-current="page"] {
+    background-color: #9d247d;
+    color: white;
+    border-radius: 4px;
+}
+
+/* Стили для скрытых элементов доступности */
 .visually-hidden {
     position: absolute !important;
     width: 1px;
@@ -630,10 +674,25 @@ picture {
     object-fit: cover;
     aspect-ratio: 16/9;
     transition: transform 0.3s ease;
+    background-color: #f5f5f5;
+    transition: transform 0.3s ease;
 }
 
 .project-img:hover {
     transform: scale(1.05);
+    
+}
+.contact-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+    color: var(--primary-hover);
+    text-decoration: underline;
+    outline: none;
 }
 
 /* Оптимизация загрузки изображений */
@@ -673,6 +732,28 @@ img[loading="lazy"].loaded {
     picture source {
         display: none;
     }
+
+    .filters {
+        display: none;
+    }
+    
+    .project-item {
+        break-inside: avoid;
+        border: 1px solid #000;
+    }
+    .contact-form {
+        break-inside: avoid;
+    }
+    
+    .btn {
+        display: none;
+    }
+    
+    .contact-link::after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+        color: #666;
+    }
 }
 
 /* Reduced motion */
@@ -687,6 +768,15 @@ img[loading="lazy"].loaded {
     .btn:hover {
         transform: none;
     }
+    .project-item,
+    .project-img,
+    .filter-btn {
+        transition: none;
+    }
+    
+    .project-img:hover {
+        transform: none;
+    }
 }
 
 /* Enhanced contrast */
@@ -698,6 +788,17 @@ img[loading="lazy"].loaded {
     
     .project-item {
         border: 1px solid #000;
+    }
+    .contact-form fieldset {
+        border: 3px solid currentColor;
+    }
+    
+    .form-control {
+        border: 2px solid currentColor;
+    }
+    
+    .required-indicator {
+        color: currentColor;
     }
 }
 
@@ -725,6 +826,17 @@ img[loading="lazy"].loaded {
         gap: 25px;
     }
 }
+
+@media (prefers-contrast: high) {
+    .filter-btn {
+        border: 2px solid currentColor;
+    }
+    
+    .project-item {
+        border: 1px solid currentColor;
+    }
+}
+
 
 /* Адаптивность */
 @media (max-width: 768px) {
@@ -763,9 +875,27 @@ img[loading="lazy"].loaded {
     .filters {
         justify-content: center;
     }
+    .contact-form fieldset {
+        padding: 15px;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
 }
 
 .full-bleed {
     margin-inline: calc(50% - 50vw);
     padding-inline: calc(50vw - 50%);
+}
+.form-success {
+    border-color: var(--success-color) !important;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1) !important;
+}
+
+/* Улучшенные фокус-стили для всей страницы */
+.contact-item:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
