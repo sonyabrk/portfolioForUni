@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Контакты - Личный сайт студента</title>
+    <title>Контакты - Софья Брюханова</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -13,15 +13,23 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">С</div>
+                    <div class="logo-icon" aria-hidden="true">С</div>
                     <h1>Софья Брюханова</h1>
                 </div>
                 <nav aria-label="Основная навигация">
-                    <ul>
-                        <li><a href="../index.html" class="nav-link">Главная</a></li>
-                        <li><a href="projects.html" class="nav-link">Проекты</a></li>
-                        <li><a href="diary.html" class="nav-link">Дневник</a></li>
-                        <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+                    <ul role="menubar">
+                        <li role="none">
+                            <a href="../index.html" class="nav-link" role="menuitem">Главная</a>
+                        </li>
+                        <li role="none">
+                            <a href="projects.html" class="nav-link" role="menuitem">Проекты</a>
+                        </li>
+                        <li role="none">
+                            <a href="diary.html" class="nav-link" role="menuitem">Дневник</a>
+                        </li>
+                        <li role="none">
+                            <a href="contacts.html" class="nav-link active" role="menuitem" aria-current="page">Контакты</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -33,57 +41,125 @@
             <h1 class="section-title">Контакты</h1>
             
             <div class="contact-container">
-                <div class="contact-form">
-                    <form id="contactForm" novalidate>
-                        <div class="form-group">
-                            <label for="name">Имя:</label>
-                            <input type="text" id="name" name="name" class="form-control" required
-                                   aria-describedby="name-hint name-error">
-                            <small id="name-hint" class="form-hint">Введите ваше полное имя</small>
-                            <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
-                        </div>
+                <section class="contact-form" aria-labelledby="contact-form-title">
+                    <h2 id="contact-form-title" class="visually-hidden">Форма обратной связи</h2>
+                    
+                    <form id="contactForm" novalidate aria-labelledby="contact-form-title">
+                        <fieldset>
+                            <legend class="visually-hidden">Персональная информация</legend>
+                            
+                            <div class="form-group">
+                                <label for="name">
+                                    Имя 
+                                    <span class="required-indicator" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">обязательное поле</span>
+                                </label>
+                                <input type="text" 
+                                       id="name" 
+                                       name="name" 
+                                       class="form-control" 
+                                       required
+                                       aria-required="true"
+                                       aria-describedby="name-hint name-error"
+                                       placeholder="Введите ваше имя">
+                                <small id="name-hint" class="form-hint">Введите ваше полное имя</small>
+                                <span id="name-error" class="error-message" role="alert" aria-live="assertive"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">
+                                    Email 
+                                    <span class="required-indicator" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">обязательное поле</span>
+                                </label>
+                                <input type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       class="form-control" 
+                                       required
+                                       aria-required="true"
+                                       aria-describedby="email-hint email-error"
+                                       placeholder="example@mail.ru">
+                                <small id="email-hint" class="form-hint">Мы пришлём ответ на этот адрес</small>
+                                <span id="email-error" class="error-message" role="alert" aria-live="assertive"></span>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="visually-hidden">Сообщение</legend>
+                            
+                            <div class="form-group">
+                                <label for="message">
+                                    Сообщение 
+                                    <span class="required-indicator" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">обязательное поле</span>
+                                </label>
+                                <textarea id="message" 
+                                          name="message" 
+                                          class="form-control" 
+                                          required
+                                          aria-required="true"
+                                          aria-describedby="message-hint message-error"
+                                          placeholder="Опишите цель вашего обращения"
+                                          rows="6"></textarea>
+                                <small id="message-hint" class="form-hint">Опишите цель вашего обращения</small>
+                                <span id="message-error" class="error-message" role="alert" aria-live="assertive"></span>
+                            </div>
+                        </fieldset>
                         
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" required
-                                   aria-describedby="email-hint email-error">
-                            <small id="email-hint" class="form-hint">Мы пришлём ответ на этот адрес</small>
-                            <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+                        <div class="form-actions">
+                            <button type="submit" class="btn" aria-describedby="submit-hint">
+                                Отправить сообщение
+                            </button>
+                            <small id="submit-hint" class="form-hint">
+                                Все поля, отмеченные *, обязательны для заполнения
+                            </small>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Сообщение:</label>
-                            <textarea id="message" name="message" class="form-control" required
-                                      aria-describedby="message-hint message-error"></textarea>
-                            <small id="message-hint" class="form-hint">Опишите цель вашего обращения</small>
-                            <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
-                        </div>
-                        
-                        <button type="submit" class="btn">Отправить сообщение</button>
                     </form>
-                </div>
+                </section>
                 
-                <div class="contact-info">
+                <section class="contact-info" aria-labelledby="contact-info-title">
+                    <h2 id="contact-info-title" class="visually-hidden">Контактная информация</h2>
+                    
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">📧</div>
-                        <div>bryukhanova.s.i@edu.mirea.ru</div>
+                        <div>
+                            <strong>Email:</strong>
+                            <a href="mailto:bryukhanova.s.i@edu.mirea.ru" class="contact-link">
+                                bryukhanova.s.i@edu.mirea.ru
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">💻</div>
-                        <div>GitHub: sonyabrk</div>
+                        <div>
+                            <strong>GitHub:</strong>
+                            <a href="https://github.com/sonyabrk" class="contact-link" target="_blank" rel="noopener noreferrer">
+                                sonyabrk
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">📍</div>
-                        <div>Москва, Россия</div>
+                        <div>
+                            <strong>Адрес:</strong>
+                            <span>Москва, Россия</span>
+                        </div>
                     </div>
-                </div>
+                </section>
+            </div>
+
+            <div id="form-status" 
+                 aria-live="polite" 
+                 aria-atomic="true" 
+                 class="visually-hidden">
             </div>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>© Фронтенд 2025</p>
         </div>
